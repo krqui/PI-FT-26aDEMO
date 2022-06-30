@@ -10,8 +10,38 @@ module.exports = (sequelize) => {
     },
     id: {
       type:DataTypes.INTEGER,
-      autoIncrement: true,
+      //autoIncrement: true,
       primaryKey:true,
+      unique:true,
+      allowNull:false
     },
+    description:{
+      type:DataTypes.TEXT,
+      allowNull:false,
+    },
+    lanzamiento: {
+      type:DataTypes.STRING,
+      allowNull:false,
+    },
+    rating: {
+      type:DataTypes.REAL,
+      allowNull:false
+    },
+    plataformas:{
+      type:DataTypes.ARRAY(DataTypes.STRING),
+      allowNull:false
+    },
+    /*genre:{
+      type:DataTypes.ARRAY(DataTypes.STRING),
+      allowNull:false
+    },*/
+    imagen:{
+      type:DataTypes.STRING,
+      allowNull:false
+    }
+  },{
+    timestamps:true,
+    createdAt:false,
+    updatedAt:false,
   });
 };
