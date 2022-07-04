@@ -1,0 +1,73 @@
+.contenedor-supremo {
+    width: 100vw;
+    height: 100vh;
+}
+.contenedor-foto1 {
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-image: url(../img/pexels-tima-miroshnichenko-6499169.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contenedor-foto2 {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-image: url(../img/pexels-cottonbro-4009626.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.contenedor-boton {
+    display: block;
+    position:absolute;
+    margin-top: -40px;
+    /*height: 480px;*/
+    /*width: 750px;*/
+    width:100vw;
+    max-width:960px;
+    background-image: url(../img/image_processing20210417-21999-nih025.gif);
+    background-size: cover;
+    
+    background-repeat: no-repeat;
+    transition-property: background-size;
+    transition-duration: 2s;
+}
+
+
+
+.div-boton {
+    display: inline-block;
+    position:static;
+    margin-left: 750px;
+    margin-top: 470px;
+}
+
+.boton {
+    /*font-family:'Comforter Brush', cursive;*/
+    font-family: 'Play', sans-serif;
+    font-size: 50px;
+    color:rgb(76, 0, 253);
+    background-color: rgba(43, 126, 243,0.5);
+}
+
+.boton:hover{
+    background:/* linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);*/
+            /*linear-gradient(to left top, blue, red);*/
+            rgb(34,193,195);
+background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(104,45,253,1) 99%);
+}
+
+/*.contenedor-boton:hover  {
+    background-size: cover;
+    max-width: 400px;
+}*/

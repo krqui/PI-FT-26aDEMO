@@ -2,7 +2,7 @@ import {GET_GAMES,GET_GENRES,CLEAR_DETAIL,
     SORT_ORDER_NAME_ASC,SORT_ORDER_NAME_DES, GET_GAME_NAME,
     SORT_ORDER_RATING_ASC, SORT_ORDER_RATING_DES, PLATFORM_FILTER, GENRE_FILTER,
     //GET_VIDEO_ID
-    GET_GAME_ID
+    GET_GAME_ID, CLEAR_GENRE
 } from './actions';
 
 const initialState={
@@ -98,6 +98,12 @@ function reducer(state=initialState, {type,payload}){
                 ...state,
                 videogameid: payload
             }*/
+        case CLEAR_GENRE:
+            return {
+                ...state,
+                allGenres:{},
+                message:null
+            }
         case GET_GAME_ID:
             return {
                 ...state,

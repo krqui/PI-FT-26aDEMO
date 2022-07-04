@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 //import {getAllGamParaCreate} from '../redux/actions';
 import {getAllGam, postVideogame, meTraigoGeneros} from '../redux/actions';
+import '../Styles/CreateGame.css';
 function CreateGame(){
     const dispatch=useDispatch();
     const [input, setInput]=useState({
-        name:'',
+        name:"",
         description:'',
         released:'',
         rating:0,
@@ -17,33 +18,53 @@ function CreateGame(){
     //dispatch(meTraigoGeneros());
 
     const Genres= useSelector((state=>state.allGenres));
-    console.log(Genres);
+    //console.log(Genres);
     const [Errors, setErrors] = useState({});
-    const videogames=useSelector(state=>state.allGames);
+    const videogames=useSelector((state)=>state.allGames);
+    //console.log(videogames);
 
 
-    const validate=(input)=>{
+    function validate(input){
         let errors={}
         if (input.name[0]===' '){
             errors.name='Should not have space behind.'
             //console.log('DEbes escribir algo');
         } else if (!input.name){
             errors.name='Missing name'
-        }/* else if (videogames.filter(game=>game.name===input.name).length>0){
+        } else if (videogames.filter(game=>game.name.toLowerCase()===input.name.toLowerCase()).length>0){
+            // Probar con Portal 2
             errors.name='Name already exist'
-        }*/ else {
-           return errors
         }
+        if (input.description[0]===' '){
+            errors.description='Should not have space behind!'
+        } else if (!input.description) {
+            errors.description='Missing description'
+        }
+        if (!input.released) {
+            errors.released='Missing Date!'
+        } else if (!/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(input.released)) {
+            errors.released= 'Wrong format!. Example: XX-XX-XXXX'
+        }
+        if (input.rating<0 || input.rating >5) {
+            errors.rating='Rating must be between 0 and 5!'
+        }
+        if (input.platforms.length===0) {
+            errors.platforms='Select at least 1 platform!'
+        }
+        if (input.genres.length===0) {
+            errors.genres='Select at least 1 gender!'
+        }
+        return errors
     }
 
     useEffect(()=>{
         
         //dispatch(getAllGamParaCreate())
-        //dispatch(getAllGam())
+        dispatch(getAllGam())
         dispatch(meTraigoGeneros())
     },[])
 
-    const handleInput=(e)=>{
+    function handleInput(e){
         setInput({
             ...input,
             [e.target.name]:e.target.value
@@ -94,68 +115,58 @@ function CreateGame(){
             rating:0,
             platforms:[],
             image:'',
-            //genres:[],
-            genres:''  
+            genres:[],
+            //genres:''  
         });
         return alert('Created!')
     }
 
-    
-
-
     return(
-        <div>
+        <div className='container-div'>
             <form autoComplete="off" onSubmit={(e)=>handleSubmit(e)}>
                 <div>
                 <div>
-                    <label>Name:</label>{/*
-                     <input className="inputName" type='text' value={input.name}
-                            name='name' placeholder="Insert name..." onChange={(e)=>handleInput(e)}>
-                    </input>
-    {Errors.name && (<p>{Errors.name}</p>)}*/}
-                    <input type='text' value={input.name} name='name'
+                    <label>Name:</label>
+                    <input className='nameInput' type="text" name="name" 
+                            value={input.name} 
                             placeholder='Insert name...' 
                             onChange={(e)=>handleInput(e)}></input>
-                    {/*Errors.name && (<p>{Errors.name}</p>)*/}
+                    {Errors.name && (<p className='error-name'>{Errors.name}</p>)}
                 </div>
                 <div>
-                    <label>
-                        Description:
-                    </label>
-                    <input value={input.description} type='text' name='description'
+                    <label>Description:</label>
+                    <input className='nameDescrip' type='text' name='description'
+                            value={input.description}
                             placeholder='Insert description...'
                             onChange={(e)=>handleInput(e)}></input>
+                    {Errors.description && (<p className='error-description'>{Errors.description}</p>)}
                 </div>
                 <div>
-                    <label>
-                        Released:
-                    </label>
-                    <input value={input.released} type='text' name='released'
+                    <label>Released:</label>
+                    <input className='nameReleased' type='text' name='released'
+                            value={input.released}
                             placeholder='Insert release date'
                             onChange={(e)=>handleInput(e)}></input>
+                    {Errors.released && (<p className='error-released'>{Errors.released}</p>)}
                 </div>
                 <div>
-                    <label>
-                        Rating:
-                    </label>
-                    <input value={input.rating} type='number' name='rating'
-                            step='0.01' min='0' max='5' placeholder='Insert rating...'
-                            onChange={(e)=>handleInput(e)}>
-                    </input>
+                    <label>Rating:</label>
+                    <input className='nameRating' type='number' name='rating'
+                            value={input.rating} step='0.01' min='0' max='5' 
+                            placeholder='Insert rating...'
+                            onChange={(e)=>handleInput(e)}></input>
+                    {Errors.rating && (<p className='error-rating'>{Errors.rating}</p>)}
                 </div>
                 <div>
-                    <label>
-                        Image:
-                    </label>
-                    <input value={input.image} name='image' type='text'
+                    <label>Image:</label>
+                    <input className='nameImage' type='text' name='image'
+                            value={input.image}
                             placeholder='Url image...'
                             onChange={(e)=>handleInput(e)}>
                     </input>
                 </div>
                 <div>
-                    <label>
-                        Platforms:
-                    </label>
+                    <label>Platforms:</label>
                     <select value={input.platforms} onChange={(e)=>handlePlat(e)} multiple={true}>
                         <option value=''>Seleccionar plataforma</option>
                         <option value='Android'>Android</option>
@@ -174,11 +185,10 @@ function CreateGame(){
                         <option value='Xbox One'>Xbox One</option>
                         <option value='Xbox Series S/X'>Xbox Series S/X</option>
                     </select>
+                    {Errors.platforms && (<p className='error-platforms'>{Errors.platforms}</p>)}
                 </div>
                 <div>
-                    <label>
-                        Genres:
-                    </label>
+                    <label>Genres:</label>
                     <select value={input.genres} onChange={(e)=>handleSelect(e)} multiple={false}>
                         {Genres && Genres.map(gen=>{
                             return (
@@ -186,14 +196,40 @@ function CreateGame(){
                             )
                         })}
                     </select>
+                    {Errors.genres && (<p className='error-genres'>{Errors.genres}</p>)}
                     </div>
                 </div>
+
                 <div>
                     <div>
-                        <button type='submit'>Create</button>
+                        <button className='submit'
+                        disabled={!Errors.name && !Errors.description && !Errors.released && !Errors.platforms && !Errors.genres? false:true}
+                        type='submit'>Create
+                        </button>
                     </div>
                 </div>
             </form>
+            
+            <div>
+                {/*input.platforms && input.platforms.map(plat=>
+                    <div className='position'>
+                        <p className='list'>{plat}</p>
+                        <button className='delete' onClick={()=> handleDeletePlat(plat)}>X</button>
+                    </div>)
+                }
+
+                {input.genres.map(gen=>
+                    <div className='position2'>
+                        <p className='lisst'>{gen}</p>
+                        <button className='delete2' onClick={()=>handleDeleteGen(gen)}>X</button>
+
+                </div>)*/}
+
+
+
+            </div>
+
+
         </div>
         
     )

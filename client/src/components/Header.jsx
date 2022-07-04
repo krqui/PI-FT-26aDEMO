@@ -4,7 +4,7 @@ import {clearDetail, orderNameAsc, orderNameDes, getGameName,
         orderRatingAsc, orderRatingDes, platformFilter,
         genreFilter} from '../redux/actions';
 import {Link} from 'react-router-dom';
-
+import '../Styles/Header.css';
 export function Header(){
     const dispatch= useDispatch();
     const genres= useSelector((state)=>state.allGenres);
@@ -62,23 +62,47 @@ export function Header(){
         dispatch(genreFilter(e.target.value))
     }
 
+    /*const orderNamePrueba=(e)=>{
+        if(e.target.value==='') return dispatch(clearDetail());
+        orderName(e.target.value)
+    }*/
+
     return (
-        <header>
-            <div>
+        <header className="navBar">
+            <div className="NavBar1">
                 <Link to='/'>
-                    <button onClick={()=>dispatch(clearDetail())}>
+                    <button className='button-backToLanding' onClick={()=>dispatch(clearDetail())}>
                         {/*Esto hace que se ejecute dispatch({type:CLEAR:DETAIL}) */}
-                        <h2>Henry Videogames</h2>
-                        <h3>Resetear la App. Regresar al menu principal.</h3>
+                        <h3>Regresar al menu principal y reset.</h3>
+                    </button>
+                </Link>
+                <h2 className="titulo">Henry Videogames</h2>
+                <form className='formu' onSubmit={onSubmit}>
+                    <input type='text' placeholder="Escribir el videojuego aqui..." 
+                        value={name} onChange={handleChange}></input>
+                </form>
+                <Link to='../createVideogame'>
+                    <button className='button-backToLanding' onClick={()=>dispatch(clearDetail())}>
+                        {/*Esto hace que se ejecute dispatch({type:CLEAR:DETAIL}) */}
+                        <h3>Crear videojuego</h3>
                     </button>
                 </Link>
             </div>
-            <form onSubmit={onSubmit}>
-                <input type='text' placeholder="Escribir el videojuego aqui..." 
-                        value={name} onChange={handleChange}></input>
-            </form>
-            <div>
-                <select onChange={filter}>
+            
+            <div className="opciones">
+            
+            <div className="los_filtros">
+                <button onClick={orderName}>
+                    <h3>Ordenar alfabeticamente</h3>
+                    <h3>{orderN.type}</h3>
+                </button>
+
+                <button onClick={orderRating}>
+                    <h3>Ordenar segun Rating</h3>
+                    <h3>{orderP.type}</h3>
+                </button>
+
+                <select className='filtroPlat' onChange={filter}>
                     <option value=''>Seleccionar plataforma</option>
                     <option value='Android'>Android</option>
                     <option value='iOS'>iOS</option>
@@ -120,18 +144,12 @@ export function Header(){
                     <option value='Strategy'>Strategy</option>
                 </select>
 
-
-
-
-                <button onClick={orderName}>
-                    <h3>Ordenar alfabeticamente</h3>
-                    <h3>{orderN.type}</h3>
-                </button>
-
-                <button onClick={orderRating}>
-                    <h3>Ordenar segun Rating</h3>
-                    <h3>{orderP.type}</h3>
-                </button>
+                {/*<select onChange={orderNamePrueba}>
+                    <option value=''>Ordenar alfabeticamente</option>
+                    <option value={orderN.type}>From A to Z</option>
+                    
+    </select>*/}
+            </div>
             </div>
 
         </header>

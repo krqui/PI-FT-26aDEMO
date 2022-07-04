@@ -20,14 +20,22 @@ console.log(jeyson);
     },
     DB: async function allGamesDB(){
     let allDB= await Games.findAll({
-        /*include:{
+        include:{
             model: Generos,
-            attributes:['name'],
+            attributes:['id','name'],
             through:{
                 attributes:[],
             }
-        }*/
+        }
     })
+    let gsdg= await Generos.findAll({
+        include:{
+            model:Games
+        }
+    })
+    //console.log(gsdg.map(e=>(e.name)));
+    let jdsf= gsdg.map(e=>(e.name));
+    //let jdsf= gsdg.map(e=>(e.id));
     let jsonAllDB=allDB.map((game)=>{
         return{
             name:game.name,
@@ -40,9 +48,11 @@ console.log(jeyson);
             //plataformas:game.platforms||'missing plataform',
             plataformas:game.plataformas,
             //genre:game.Geneross.map(g=>(g.name)),
+            genres:jdsf,
+            //genres:game.gameId
         }
     })
-    console.log(jsonAllDB);
+    //console.log(jsonAllDB);
         return jsonAllDB
     },
     ALL:async function(){

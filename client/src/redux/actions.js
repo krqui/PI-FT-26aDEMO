@@ -12,14 +12,15 @@ export const PLATFORM_FILTER='PLATFORM_FILTER';
 export const GENRE_FILTER='GENRE_FILTER';
 //export const GET_VIDEO_ID='GET_VIDEO_ID';
 export const GET_GAME_ID='GET_GAME_ID';
+export const CLEAR_GENRE='CLEAR_GENRE';
 
 const URL='http://localhost:3001/games';
 const URLCreateGame='http://localhost:3001/createGame';
 // se exportan al reducer.js
 export function getAllGam(){
-    return (dispatch)=>{
-        return axios('http://localhost:3001/games/')
-        .then(res=>dispatch({type:'GET_GAMES', payload:res.data}))
+    return async (dispatch)=>{
+        const res = await axios('http://localhost:3001/games/');
+        return dispatch({ type: 'GET_GAMES', payload: res.data });
     }
 }
 
@@ -73,6 +74,10 @@ export const orderRatingDes=()=>{
 
 export function clearDetail(){
     return {type:CLEAR_DETAIL}
+}
+
+export function clearGenre(){
+    return {type:CLEAR_GENRE}
 }
 
 export const getGameDetail=(id)=>async dispatch=>{

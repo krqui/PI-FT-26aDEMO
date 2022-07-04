@@ -108,7 +108,7 @@ router.get('/:id',async(req,res)=>{
                 name:game.name,
                 image:game.imagen,
                 // ↓UN GATO LO HIZO
-                //genres:game.genres,
+                genres:game.genres,
                 description:game.description,
                 rating:game.rating,
                 platforms:game.plataformas,

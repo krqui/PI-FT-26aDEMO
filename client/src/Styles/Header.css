@@ -1,0 +1,23 @@
+
+.button-backToLanding {
+    display: inline-block;
+    width: 30vw;
+}
+.titulo {
+    display: inline-block;
+    width: 30vw;
+}
+
+.formu {
+    display: inline-block;
+    width: 30vw;
+}
+
+.los_filtros {
+    display: flex;
+    text-align: left;
+}
+
+.filtroPlat {
+    width: 200px;
+}
