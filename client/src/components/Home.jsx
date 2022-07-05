@@ -36,7 +36,7 @@ const currentGame=Array.isArray(games.searchGame)
         ? games.searchGame?.slice(indexOfFirstGame, indexOfLastGame)
         : games.allGames?.slice(indexOfFirstGame,indexOfLastGame);
 
-
+console.log(currentGame);
 const paginate=pageNumber=>{
     setCurrentPage(pageNumber)
 };
@@ -45,8 +45,8 @@ const paginate=pageNumber=>{
 const renderContext = {
     allGames:
         games.allGames.length===0
-        ? <div>
-            <div><h2>Cargando juegos...</h2></div>
+        ? <div className="loading">
+            <div><h2 className="loading_games">Cargando juegos...</h2></div>
             <iframe src="https://giphy.com/embed/motnLx3NDhfoSfuWXF" width="480" height="480" frameBorder="0" className="giphy-a" alt='Loading countries...' allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cyberpunk-windows-1984-motnLx3NDhfoSfuWXF">via GIPHY</a></p>
         </div>
         : currentGame?.map(game=>(
@@ -82,7 +82,7 @@ useEffect(()=>{
 },[currentPage])
 
     return(
-        <div>
+        <div className="superContenedor">
             <div className="style-containerGrid">
                 {!games.searchGame? renderContext.allGames: renderContext.searchGame}
             </div>

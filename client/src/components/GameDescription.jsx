@@ -46,18 +46,20 @@ export const GameDescription=()=>{
                 </div>
             </div>
 
-            <div>
+            <div className="container-description">
                 <div>
-                    <div>
-                        <img className='hola'src={gameDetail.image} alt='No img'></img>
+                    <div className="imagen-container">
+                        <img className='class-imagen2' src={gameDetail.image} alt='No img'></img>
                     </div>
-                    <h3>Name:{gameDetail.name}</h3>
+                    <div className="h3-container-h3">
+                    <h3>Name: {gameDetail.name}</h3>
                     
-                    <h3>Genres:{gameDetail.genres}</h3>
-                    <h3>Description:{gameDetail.description}</h3>
-                    <h3>Rating:{gameDetail.rating}</h3>
-                    <h3>Platforms:{gameDetail.platforms}</h3>
-                    <h3>Lanzamiento:{gameDetail.lanzamiento}</h3>
+                    <h3>Genres: {gameDetail.genres}</h3>
+                    <h3>Description: {gameDetail.description}</h3>
+                    <h3>Rating: {gameDetail.rating}</h3>
+                    <h3>Platforms: {gameDetail.platforms}</h3>
+                    <h3>Lanzamiento: {gameDetail.lanzamiento}</h3>
+                    </div>
                 </div>
             </div>
         </div>

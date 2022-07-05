@@ -30,6 +30,8 @@ router.post('/',async function(req,res){
     post.addGeneros(GendersDisp)
     res.send(`${name} ha sido agregado con exito`)*/
     /*TODO ESTO DE ABAJO ES DE PRUEBA*/
+
+// VOY A PROBAR CREAR CON MAS DE UN SOLO GENERO DE VIDEOJUEGOS
     let idgenero=Number(genres[0]);
     try{
         const videoGameValidator=await Games.findOne({//aca buscas si ya creaste el videojuego
@@ -38,12 +40,13 @@ router.post('/',async function(req,res){
             },
             include:[{
                 model:Generos,
-                where:{id:idgenero}
+                //where:{id:idgenero}
                 //where:{id:genres[0]}// pongo asi porque desde el front creo que manda un arreglo
             }]
         });
 
         if(videoGameValidator===null){
+            
             const [createGame,created]=await Games.findOrCreate({
                 where: {
                     id:id,
@@ -55,14 +58,18 @@ router.post('/',async function(req,res){
                     imagen:image
                 },
             });
-            ++id
+            //++id
             console.log(`El id es ahora ${id}`);
-            const findGames=await Generos.findAll({
-                where:{
-                    id:idgenero
-                },
-            });
-            await createGame.addGeneros(findGames);
+            for(let i=0;i<genres.length;i++){
+                let idgenero=Number(genres[i])
+                let findGames=await Generos.findAll({
+                    where:{
+                        id:idgenero
+                    },
+                });
+                await createGame.addGeneros(findGames);
+            }
+            ++id
             return res.send('Videojuego creado');
         } else {
             return res.send('Ya existe el videojuego')

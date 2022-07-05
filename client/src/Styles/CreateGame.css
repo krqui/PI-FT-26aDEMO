@@ -1,3 +1,56 @@
+label {
+    font-size: 30px;
+    font-family: 'Play', sans-serif;
+}
 .container-div{
-    background-color: rgba(170, 255, 79, 0.5);
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../img/chicoarcade_3840x2160.jpg);
+    background-size: cover;
+}
+
+.formulario {
+    margin-top: 5vh;
+    margin-left: 16px;
+    display: inline-block;
+    background-color: rgba(56, 245, 255, 0.456);
+}
+
+.contenedor-name {
+    display: flex;
+}
+.contenedor-description {
+    display: flex;
+}
+.contenedor-released {
+    display: flex;
+}
+.contenedor-rating {
+    display: flex;
+}
+.contenedor-image {
+    display: flex;
+}
+.contenedor-platforms {
+    display: flex;
+}
+.contenedor-genres {
+    display: flex;
+}
+.contenedor-submit {
+    display: flex;
+}
+
+.submit {
+    background-color: aquamarine;
+}
+.meRegreso {
+    background-color: aquamarine;
+}
+
+.submit:hover {
+    background-color: rgb(9, 213, 145);
+}
+.meRegreso:hover {
+    background-color: rgb(7, 215, 145);
 }

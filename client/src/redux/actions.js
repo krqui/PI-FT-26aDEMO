@@ -132,3 +132,4 @@ export function meTraigoGeneros(){
 /*export const getVideoID=(id)=>{
     return 
 }*/
+// NO OLVIDAR AGREGAR ALGO SIMILAR A: dispatch({type: 'DELETE_CITY', payload:234})

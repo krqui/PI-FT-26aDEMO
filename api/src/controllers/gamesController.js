@@ -28,15 +28,17 @@ console.log(jeyson);
             }
         }
     })
-    let gsdg= await Generos.findAll({
+    /*let gsdg= await Generos.findAll({
         include:{
             model:Games
         }
-    })
+    })*/
     //console.log(gsdg.map(e=>(e.name)));
-    let jdsf= gsdg.map(e=>(e.name));
+    /*let jdsf= gsdg.map(e=>(e.id));
+    console.log(jdsf);*/
     //let jdsf= gsdg.map(e=>(e.id));
     let jsonAllDB=allDB.map((game)=>{
+        //let gen= Generos.findByPk(jsdf)
         return{
             name:game.name,
             id:game.id,
@@ -48,8 +50,10 @@ console.log(jeyson);
             //plataformas:game.platforms||'missing plataform',
             plataformas:game.plataformas,
             //genre:game.Geneross.map(g=>(g.name)),
-            genres:jdsf,
+            //          genre:jdsf,
             //genres:game.gameId
+            // ↓ por mientras
+            genre:'Indie, Action'
         }
     })
     //console.log(jsonAllDB);

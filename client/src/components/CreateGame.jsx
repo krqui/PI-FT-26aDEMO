@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 //import {getAllGamParaCreate} from '../redux/actions';
@@ -12,11 +13,12 @@ function CreateGame(){
         rating:0,
         platforms:[],
         image:'',
-        /*genres:[],*/
-        genres:'',
+        genres:[],
+        //genres:'',
     });
     //dispatch(meTraigoGeneros());
-
+    // en la consola visualizo en los generos, los numeros con strings
+console.log(input);
     const Genres= useSelector((state=>state.allGenres));
     //console.log(Genres);
     const [Errors, setErrors] = useState({});
@@ -123,50 +125,50 @@ function CreateGame(){
 
     return(
         <div className='container-div'>
-            <form autoComplete="off" onSubmit={(e)=>handleSubmit(e)}>
+            <form className='formulario' autoComplete="off" onSubmit={(e)=>handleSubmit(e)}>
                 <div>
-                <div>
-                    <label>Name:</label>
+                <div className='contenedor-name'>
+                    <label>Name: </label>
                     <input className='nameInput' type="text" name="name" 
                             value={input.name} 
                             placeholder='Insert name...' 
                             onChange={(e)=>handleInput(e)}></input>
                     {Errors.name && (<p className='error-name'>{Errors.name}</p>)}
                 </div>
-                <div>
-                    <label>Description:</label>
+                <div className='contenedor-description'>
+                    <label>Description: </label>
                     <input className='nameDescrip' type='text' name='description'
                             value={input.description}
                             placeholder='Insert description...'
                             onChange={(e)=>handleInput(e)}></input>
                     {Errors.description && (<p className='error-description'>{Errors.description}</p>)}
                 </div>
-                <div>
-                    <label>Released:</label>
+                <div className='contenedor-released'>
+                    <label>Released: </label>
                     <input className='nameReleased' type='text' name='released'
                             value={input.released}
                             placeholder='Insert release date'
                             onChange={(e)=>handleInput(e)}></input>
                     {Errors.released && (<p className='error-released'>{Errors.released}</p>)}
                 </div>
-                <div>
-                    <label>Rating:</label>
+                <div className='contenedor-rating'>
+                    <label>Rating: </label>
                     <input className='nameRating' type='number' name='rating'
                             value={input.rating} step='0.01' min='0' max='5' 
                             placeholder='Insert rating...'
                             onChange={(e)=>handleInput(e)}></input>
                     {Errors.rating && (<p className='error-rating'>{Errors.rating}</p>)}
                 </div>
-                <div>
-                    <label>Image:</label>
+                <div className='contenedor-image'>
+                    <label>Image: </label>
                     <input className='nameImage' type='text' name='image'
                             value={input.image}
                             placeholder='Url image...'
                             onChange={(e)=>handleInput(e)}>
                     </input>
                 </div>
-                <div>
-                    <label>Platforms:</label>
+                <div className='contenedor-platforms'>
+                    <label>Platforms: </label>
                     <select value={input.platforms} onChange={(e)=>handlePlat(e)} multiple={true}>
                         <option value=''>Seleccionar plataforma</option>
                         <option value='Android'>Android</option>
@@ -187,12 +189,12 @@ function CreateGame(){
                     </select>
                     {Errors.platforms && (<p className='error-platforms'>{Errors.platforms}</p>)}
                 </div>
-                <div>
-                    <label>Genres:</label>
-                    <select value={input.genres} onChange={(e)=>handleSelect(e)} multiple={false}>
+                <div className='contenedor-genres'>
+                    <label>Genres: </label>
+                    <select value={input.genres} onChange={(e)=>handleSelect(e)} multiple={true}>
                         {Genres && Genres.map(gen=>{
                             return (
-                                <option key={gen.name} value={gen.id}>{gen.name}</option>
+                                <option key={gen.name} value={Number(gen.id)}>{gen.name}</option>
                             )
                         })}
                     </select>
@@ -200,7 +202,7 @@ function CreateGame(){
                     </div>
                 </div>
 
-                <div>
+                <div className='contenedor-submit'>
                     <div>
                         <button className='submit'
                         disabled={!Errors.name && !Errors.description && !Errors.released && !Errors.platforms && !Errors.genres? false:true}
@@ -224,6 +226,11 @@ function CreateGame(){
                         <button className='delete2' onClick={()=>handleDeleteGen(gen)}>X</button>
 
                 </div>)*/}
+                <Link to='./home'>
+                    <button className='meRegreso'>
+                        Back to all Games
+                    </button>
+                    </Link>
 
 
 

@@ -73,34 +73,33 @@ export function Header(){
                 <Link to='/'>
                     <button className='button-backToLanding' onClick={()=>dispatch(clearDetail())}>
                         {/*Esto hace que se ejecute dispatch({type:CLEAR:DETAIL}) */}
-                        <h3>Regresar al menu principal y reset.</h3>
+                        <h3>Back to landing</h3>
                     </button>
                 </Link>
-                <h2 className="titulo">Henry Videogames</h2>
-                <form className='formu' onSubmit={onSubmit}>
-                    <input type='text' placeholder="Escribir el videojuego aqui..." 
-                        value={name} onChange={handleChange}></input>
-                </form>
+                
+                
                 <Link to='../createVideogame'>
-                    <button className='button-backToLanding' onClick={()=>dispatch(clearDetail())}>
+                    <button className='button-crearVideogame' onClick={()=>dispatch(clearDetail())}>
                         {/*Esto hace que se ejecute dispatch({type:CLEAR:DETAIL}) */}
                         <h3>Crear videojuego</h3>
                     </button>
                 </Link>
+                <button className='class-order' onClick={orderName}>
+                    <h3>Order A-Z/Z-A</h3>
+                    {/*<h3>{orderN.type}</h3>*/}
+                </button>
+
+                <button className='class-rating' onClick={orderRating}>
+                    <h3>Order by Rating</h3>
+                    {/*<h3>{orderP.type}</h3>*/}
+                </button>
+                <h2 className="titulo">Henry Videogames</h2>
             </div>
             
             <div className="opciones">
             
             <div className="los_filtros">
-                <button onClick={orderName}>
-                    <h3>Ordenar alfabeticamente</h3>
-                    <h3>{orderN.type}</h3>
-                </button>
-
-                <button onClick={orderRating}>
-                    <h3>Ordenar segun Rating</h3>
-                    <h3>{orderP.type}</h3>
-                </button>
+                
 
                 <select className='filtroPlat' onChange={filter}>
                     <option value=''>Seleccionar plataforma</option>
@@ -121,7 +120,7 @@ export function Header(){
                     <option value='Xbox Series S/X'>Xbox Series S/X</option>
                 </select>
 
-                <select onChange={filterGen}>
+                <select className='filtroGen' onChange={filterGen}>
                     <option value=''>Seleccionar genero</option>
                     <option value='Action'>Action</option>
                     <option value='Adventure'>Adventure</option>
@@ -149,6 +148,10 @@ export function Header(){
                     <option value={orderN.type}>From A to Z</option>
                     
     </select>*/}
+                <form className='formu' onSubmit={onSubmit}>
+                    <input className='elInput' type='text' placeholder="Escribir el videojuego aqui..." 
+                        value={name} onChange={handleChange}></input>
+                </form>
             </div>
             </div>
 

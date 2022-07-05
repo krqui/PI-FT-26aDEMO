@@ -1,23 +1,83 @@
+.navBar {
+    /*background-color: rgba(204, 255, 0,0.5);*/
+    /*background-color: 
+       rgb(255, 193, 47);*/
+       background: linear-gradient(90deg, rgba(255,146,29,1) 0%, rgba(241,255,0,1) 54%, rgba(255,162,0,1) 89%);
+       font-family: 'Play', sans-serif;
+       border-style: groove;
+       /*border-color: rgb(219, 165, 29);*/
+       border-color: black;
+}
+
+/*.navBar {
+    display: flex;
+}*/
 
 .button-backToLanding {
     display: inline-block;
-    width: 30vw;
+    width: 8vw;
+    margin-right: 10px;
+    font-family: 'Play', sans-serif;
+    background-color: rgba(249, 206, 52, 0.5);
 }
+.button-crearVideogame{
+    display: inline-block;
+    width: 8vw;
+    margin-right: 10px;
+    font-family: 'Play', sans-serif;
+    background-color: rgba(249, 206, 52, 0.3);
+}
+
 .titulo {
     display: inline-block;
+    font-size: 40px;
     width: 30vw;
 }
 
-.formu {
+
+
+.class-order {
     display: inline-block;
-    width: 30vw;
+    width: 8vw;
+    margin-right: 10px;
+    font-family: 'Play', sans-serif;
+    background-color: rgba(249, 206, 52, 0.3);
+}
+
+.class-rating {
+    display: inline-block;
+    width: 8vw;
+    font-family: 'Play', sans-serif;
+    background-color: rgba(249, 206, 52, 0.2);
 }
 
 .los_filtros {
-    display: flex;
-    text-align: left;
+    display: inline-block;
+    height: 30px;
+    /*background-color: rgba(0, 0, 0, 0.478);*/
+    /*text-align: left;*/
 }
 
 .filtroPlat {
     width: 200px;
+    background-color: rgba(249, 206, 52, 0.4);
+    font-family: 'Play', sans-serif;
+}
+
+.filtroGen {
+    width: 200px;
+    background-color: rgba(249, 206, 52, 0.3);
+    font-family: 'Play', sans-serif;
+}
+
+.formu {
+    display: inline-block;
+    /*width: 200px;*/
+    /*background-color: rgba(249, 206, 52, 0.5);*/
+}
+
+.elInput {
+    font-family: 'Play', sans-serif;
+    width: 250px;
+    background-color: rgba(249, 206, 52, 0.3);;
 }

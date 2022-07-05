@@ -1,4 +1,36 @@
-.hola {
-    max-width: 400px;
+.container-description {
+    display: block;
+    margin-top: 10vh;
+    position: relative;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    width: 50vw;
+    background-color: rgba(40, 148, 255, 0.631);
+    border-style: double;
+    border-color: rgba(10, 127, 244, 0.891);
+}
 
+.imagen-container {
+    display: block;
+
+    /*background-color: rgb(148, 31, 31);*/
+    
+}
+.class-imagen2 {
+    height: 750px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.h3-container-h3 {
+    color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px #0fa
 }

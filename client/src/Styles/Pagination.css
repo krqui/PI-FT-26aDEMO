@@ -1,3 +1,33 @@
+.footer-container {
+  
+  background-color: rgba(1, 255, 175, 0.58);
+  /*background-color: rgba(41, 102, 176, 0.795);*/
+}
 .style-footer{
-  display: flex;  
+  display: flex; 
+}
+
+.botonPie {
+  height: 35px;
+  width: 45px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgba(224, 39, 248, 0.625);
+  border-style: groove;
+  border-color: red;
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+
+.botonPie:hover {
+  background-color: violet;
+
 }
