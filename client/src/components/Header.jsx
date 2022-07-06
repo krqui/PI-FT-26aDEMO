@@ -157,7 +157,7 @@ console.log(genres);
                 <form className='formu' onSubmit={onSubmit}>
                     <input className='elInput' type='text' placeholder="Escribir el videojuego aqui..." 
                         value={name} onChange={handleChange}></input>
-                    <input className='elbotonInput' type="submit"></input>
+                    <input className='elbotonInput' type="submit" value='Search it!'></input>
                 </form>
             </div>
             </div>

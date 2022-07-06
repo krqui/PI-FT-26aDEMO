@@ -94,14 +94,18 @@ router.get('/:id',async(req,res)=>{
         //console.log(gameDB);
         let gameDB2=gameDB.filter(game=>game.id==id)
         let gameDB3=gameDB2.map(game=>{
+            let genu=game.genre.toString().replace(',',', ');
+            let platu=game.plataformas.toString().replace(',',', ');
+
             return {
                 name:game.name,
                 image:game.imagen,
-                genres:game.genre,
-                //genres:game.genres,
+                genres:genu,
+                //genres:game.genre,
                 description:game.description,
                 rating:game.rating,
-                platforms:game.plataformas,
+                platforms:platu,
+                //platforms:game.plataformas,
                 lanzamiento:game.lanzamiento
                 
             }

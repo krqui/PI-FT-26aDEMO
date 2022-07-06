@@ -57,7 +57,7 @@ console.log(jeyson);
             //[0].dataValues.name
         }
     })
-    console.log(jsonAllDB);
+    //console.log(jsonAllDB);
         return jsonAllDB
     },
     ALL:async function(){
