@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
     },
     id: {
       type:DataTypes.INTEGER,
-      //autoIncrement: true,
+      autoIncrement: false,
       primaryKey:true,
       unique:true,
       allowNull:false
@@ -31,10 +31,6 @@ module.exports = (sequelize) => {
       type:DataTypes.ARRAY(DataTypes.STRING),
       allowNull:false
     },
-    /*genre:{
-      type:DataTypes.ARRAY(DataTypes.STRING),
-      allowNull:false
-    },*/
     imagen:{
       type:DataTypes.STRING,
       allowNull:false

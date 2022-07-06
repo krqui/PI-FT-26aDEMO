@@ -10,7 +10,6 @@ export const SORT_ORDER_RATING_ASC='SORT_ORDER_RATING_ASC';
 export const SORT_ORDER_RATING_DES='SORT_ORDER_RATING_DES';
 export const PLATFORM_FILTER='PLATFORM_FILTER';
 export const GENRE_FILTER='GENRE_FILTER';
-//export const GET_VIDEO_ID='GET_VIDEO_ID';
 export const GET_GAME_ID='GET_GAME_ID';
 export const CLEAR_GENRE='CLEAR_GENRE';
 
@@ -20,23 +19,17 @@ const URLCreateGame='http://localhost:3001/createGame';
 export function getAllGam(){
     return async (dispatch)=>{
         const res = await axios('http://localhost:3001/games/');
-        return dispatch({ type: 'GET_GAMES', payload: res.data });
+        return dispatch({ type: GET_GAMES, payload: res.data });
     }
 }
 
-/*export function getAllGamApi(){
-    return (dispatch)=>{
-        return axios('https://api.rawg.io/api/games?key=11dff463ba48429c8eff9f1e0acaf87f')
-        .then(res=>dispatch({type:'GET_GAMES',payload:res.data.results}))
+export function meTraigoGeneros(){
+    return async (dispatch)=>{
+        let respuesta=await axios('http://localhost:3001/genres/')
+        return dispatch({type:GET_GENRES,payload:respuesta.data})
     }
-}*/
+}
 
-/*export function getAllGamParaCreate(){
-    return (dispatch)=>{
-        return axios('http://localhost:3001/createVideoGame/')
-        .then(res=>dispatch({type:'GET_GAMES', payload:res.data}))
-    }
-}*/
 
 export const getGameName=(name)=> async dispatch => {
     try{
@@ -82,7 +75,7 @@ export function clearGenre(){
 
 export const getGameDetail=(id)=>async dispatch=>{
     try{
-        //const response= await axios(`${URL}/${id}`);
+        
         const response= await axios(`${URLCreateGame}/${id}`);
         return dispatch({type:GET_GAME_ID, payload:response.data})
     } catch (error) {
@@ -109,27 +102,8 @@ export const genreFilter=(genre)=>{
     }
 }
 
-/*export const meTraigoGeneros=()=>async dispatch=>{
-    try{
-        const respuesta=await axios('http://localhost:3001/genres/')
-        return dispatch({type:GET_GENRES,payload:respuesta.data})
-    } catch (error){
-        return console.log('Hay un error--->',error);
-    }
-}*/
-export function meTraigoGeneros(){
-    return async function(dispatch){
-        let respuesta=await axios('http://localhost:3001/genres/')
-        return dispatch({type:GET_GENRES,payload:respuesta.data})
-    }
-        /*const respuesta=await axios('http://localhost:3001/genres/')
-        req(respuesta.data.map((e)=>e.name)}
-    }res(console.log('Hay un error--->',error));*/
-}
 
 
 
-/*export const getVideoID=(id)=>{
-    return 
-}*/
+
 // NO OLVIDAR AGREGAR ALGO SIMILAR A: dispatch({type: 'DELETE_CITY', payload:234})

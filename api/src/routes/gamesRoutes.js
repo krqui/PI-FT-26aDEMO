@@ -1,7 +1,6 @@
 const {Router} = require('express');
 const axios = require('axios');
-const {Games, Generos} = require('../db.js');
-//const {getAllGames} = require('../controllers/gamesController.js');
+const {Games, Generos, API_KEY} = require('../db.js');
 const {getAllGenres} = require('../controllers/genresController.js');
 //const {Op} = require('sequelize');
 const functions= require('../controllers/gamesController.js')
@@ -21,7 +20,7 @@ router.get('/', async(req,res)=>{
         contador=contador+1;
         console.log(`El contador es ${contador}`)}
     if (name){
-        let api= (await axios.get(`https://api.rawg.io/api/games?key=c914ea29483145d2962820e989c9538b&search=${name}`)).data.results;
+        let api= (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}`)).data.results;
         let result= api.map(game=>{
             return {
                 id:game.id,
@@ -72,32 +71,6 @@ router.get('/', async(req,res)=>{
         res.status(404).send(error);
     }
 });
-
-/*router.get('/:id',async(req,res)=>{
-    const {id}=req.params;
-    try{
-        if (contador==0){
-            //await getAllGames()
-            await getAllGenres()
-            contador=contador+1;
-            console.log(`El contador es ${contador}`)}
-    const idSearch= await Games.findOne({
-        where:{
-            id:id.toUpperCase()
-        },
-        include: {
-            model:Generos,
-            attributes:['name','id'],
-            through:{attributes:[]},
-        }
-    })
-
-    if(!idSearch) return res.status(404).send(`El id ${id} no corresponde a un videojuego existente.`)
-    res.json(idSearch)
-    } catch (error){
-        console.log(error);
-    }
-});*/
 
 
 // ACA VENDRIA LA RUTA DELETE

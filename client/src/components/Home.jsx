@@ -24,7 +24,6 @@ const pageValidator=(currentPage)=>{
 
 useEffect(()=>{
     dispatch(getAllGam())
-    //dispatch(getAllGamApi())
 }, [dispatch])
 // para que games.allGames.length jale los datos del reducer, debes escribir la
 // funcion dispatch de arriba. De lo contrario, games.allGames.length se mantiene vacia.

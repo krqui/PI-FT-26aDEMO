@@ -19,11 +19,8 @@ function LandingPage(){
                 </div>
             </div>
 
-            <div className="contenedor-foto2">
-            </div>
-            <div className="contenedor-foto3">
-
-            </div>
+            <div className="contenedor-foto2"></div>
+            <div className="contenedor-foto3"></div>
         </div>)
 }
 

@@ -1,7 +1,5 @@
 const {Router} = require('express');
 const {Generos} = require('../db.js');
-const {getAllGenres} = require('../controllers/genresController.js');
-let cuenta=0;
 const router = Router();
 
 router.get('/',(req,res)=>{

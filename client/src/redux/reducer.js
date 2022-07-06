@@ -1,7 +1,6 @@
 import {GET_GAMES,GET_GENRES,CLEAR_DETAIL, 
     SORT_ORDER_NAME_ASC,SORT_ORDER_NAME_DES, GET_GAME_NAME,
     SORT_ORDER_RATING_ASC, SORT_ORDER_RATING_DES, PLATFORM_FILTER, GENRE_FILTER,
-    //GET_VIDEO_ID
     GET_GAME_ID, CLEAR_GENRE
 } from './actions';
 
@@ -43,7 +42,7 @@ function reducer(state=initialState, {type,payload}){
         case CLEAR_DETAIL:
             return {
                 ...state,
-                GameDetails:{},
+                GameDetails:[],
                 message:null
             };
         case SORT_ORDER_NAME_ASC:
@@ -93,15 +92,10 @@ function reducer(state=initialState, {type,payload}){
                 ...state,
                 searchGame:filtered2
             }
-        /*case GET_VIDEO_ID:
-            return {
-                ...state,
-                videogameid: payload
-            }*/
         case CLEAR_GENRE:
             return {
                 ...state,
-                allGenres:{},
+                allGenres:[],
                 message:null
             }
         case GET_GAME_ID:

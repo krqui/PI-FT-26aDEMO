@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-//import {getAllGamParaCreate} from '../redux/actions';
+
 import {getAllGam, postVideogame, meTraigoGeneros} from '../redux/actions';
 import '../Styles/CreateGame.css';
 function CreateGame(){
@@ -14,7 +14,7 @@ function CreateGame(){
         platforms:[],
         image:'',
         genres:[],
-        //genres:'',
+        
     });
     //dispatch(meTraigoGeneros());
     // en la consola visualizo en los generos, los numeros con strings
@@ -30,7 +30,6 @@ console.log(input);
         let errors={}
         if (input.name[0]===' '){
             errors.name='Should not have space behind.'
-            //console.log('DEbes escribir algo');
         } else if (!input.name){
             errors.name='Missing name'
         } else if (videogames.filter(game=>game.name.toLowerCase()===input.name.toLowerCase()).length>0){
@@ -61,7 +60,7 @@ console.log(input);
 
     useEffect(()=>{
         
-        //dispatch(getAllGamParaCreate())
+       
         dispatch(getAllGam())
         dispatch(meTraigoGeneros())
     },[])
@@ -104,7 +103,6 @@ console.log(input);
             }))
         }
     }
-//dispatch(meTraigoGeneros());
 
 
     const handleSubmit=(e)=>{
@@ -213,27 +211,11 @@ console.log(input);
             </form>
             
             <div>
-                {/*input.platforms && input.platforms.map(plat=>
-                    <div className='position'>
-                        <p className='list'>{plat}</p>
-                        <button className='delete' onClick={()=> handleDeletePlat(plat)}>X</button>
-                    </div>)
-                }
-
-                {input.genres.map(gen=>
-                    <div className='position2'>
-                        <p className='lisst'>{gen}</p>
-                        <button className='delete2' onClick={()=>handleDeleteGen(gen)}>X</button>
-
-                </div>)*/}
                 <Link to='./home'>
                     <button className='meRegreso'>
                         Back to all Games
                     </button>
-                    </Link>
-
-
-
+                </Link>
             </div>
 
 

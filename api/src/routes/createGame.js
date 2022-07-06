@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const axios= require('axios');
-const {Games, Generos} = require('../db');
+const {Games, Generos, API_KEY} = require('../db');
 //const {Op}= require('sequelize');
 
 const router=Router();
@@ -14,25 +14,8 @@ router.post('/',async function(req,res){
         return res.status(400).send('Campo faltante')
     }
 
-    /*let post= await Games.create({
-        id:id,
-        name:name,
-        description:description,
-        lanzamiento:released,
-        rating:rating,
-        plataformas:platforms||['missing platforms'],
-        imagen:image
-    });
-    ++id
-    let GendersDisp=await Generos.findAll({
-        where:{name:genres}
-    })
-    post.addGeneros(GendersDisp)
-    res.send(`${name} ha sido agregado con exito`)*/
-    /*TODO ESTO DE ABAJO ES DE PRUEBA*/
 
 // VOY A PROBAR CREAR CON MAS DE UN SOLO GENERO DE VIDEOJUEGOS
-    let idgenero=Number(genres[0]);
     try{
         const videoGameValidator=await Games.findOne({//aca buscas si ya creaste el videojuego
             where:{
@@ -58,7 +41,7 @@ router.post('/',async function(req,res){
                     imagen:image
                 },
             });
-            //++id
+
             console.log(`El id es ahora ${id}`);
             for(let i=0;i<genres.length;i++){
                 let idgenero=Number(genres[i])
@@ -92,16 +75,16 @@ router.get('/:id',async(req,res)=>{
     let {id}=req.params
 
     if(id<800000){
-        let gameApi=(await axios.get(`https://api.rawg.io/api/games/${id}?key=c914ea29483145d2962820e989c9538b`)).data
+        let gameApi=(await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)).data
         //console.log(gameApi);
 
         let game2={
             "name":gameApi.name,
             "image":gameApi.background_image,
-            "genres":gameApi.genres.map(gen=>gen.name),
+            "genres":gameApi.genres.map(gen=>gen.name).toString().replace(',',', '),
             "description":gameApi.description_raw,
             "rating":gameApi.rating,
-            "platforms":gameApi.platforms.map(plat=>plat.platform.name),
+            "platforms":gameApi.platforms.map(plat=>plat.platform.name).toString().replace(',',', '),
             "lanzamiento":gameApi.released
         }
         //console.log(game2);
@@ -114,8 +97,8 @@ router.get('/:id',async(req,res)=>{
             return {
                 name:game.name,
                 image:game.imagen,
-                // ↓UN GATO LO HIZO
-                genres:game.genres,
+                genres:game.genre,
+                //genres:game.genres,
                 description:game.description,
                 rating:game.rating,
                 platforms:game.plataformas,

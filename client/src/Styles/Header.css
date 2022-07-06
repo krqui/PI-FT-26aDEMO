@@ -79,5 +79,9 @@
 .elInput {
     font-family: 'Play', sans-serif;
     width: 250px;
-    background-color: rgba(249, 206, 52, 0.3);;
+    background-color: rgba(249, 206, 52, 0.3);
+}
+
+.elbotonInput {
+    background-color: rgba(249, 206, 52, 0.2);
 }

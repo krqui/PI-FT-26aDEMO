@@ -14,7 +14,7 @@ export const Pagination=({gamesPerPage,totalGames,paginate})=>{
             <ul className='style-footer'>
                {pageNumbers.map(number=>(
                 <li key={number} style={{listStyle:'none'}}>
-                    <button className='botonPie' onClick={()=>paginate(number)}>
+                    <button type='button' className='botonPie' onClick={()=>paginate(number)}>
                         {number}
                     </button>
                 </li>

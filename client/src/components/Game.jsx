@@ -4,17 +4,16 @@ import '../Styles/Game.css'
 
 export function Game(props){
     const {id,name,rating,launched,platforms,cover,genres}=props;
-    console.log(genres);
+    //console.log(genres);
     let c=''
     if (genres.length>1){
-        c=genres.toString()
+        c=genres.toString().replace(',',', ')
     }else {
         c=genres[0];
     }
     //let d=genres[0];
-    //c=genres.map()
     //c=genres.reduce((a)=>+','+a,d)
-    console.log(c);
+    //console.log(c);
     return (
         <div className='tarjetaJuego'>
             <Link to={`/games/${id}`}>

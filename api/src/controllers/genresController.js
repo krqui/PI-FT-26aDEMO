@@ -1,10 +1,9 @@
 const axios=require('axios');
-const {Generos}= require('../db')
-//let {contador} = require('../routes/gamesRoutes');
+const {Generos,API_KEY}= require('../db')
+
 async function getAllGenres(){
-    //if(contador===0){
     try{
-        let generos= (await axios('https://api.rawg.io/api/genres?key=c914ea29483145d2962820e989c9538b')).data.results
+        let generos= (await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)).data.results
         .map(e=>({name:e.name}));
         
         await Generos.bulkCreate(generos)
@@ -13,7 +12,6 @@ async function getAllGenres(){
     } catch (error) {
         console.log(error);
     }
-//}
 }
 
 module.exports={

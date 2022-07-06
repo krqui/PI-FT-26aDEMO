@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {clearDetail, orderNameAsc, orderNameDes, getGameName,
         orderRatingAsc, orderRatingDes, platformFilter,
-        genreFilter} from '../redux/actions';
+        genreFilter,
+        meTraigoGeneros,
+        clearGenre} from '../redux/actions';
 import {Link} from 'react-router-dom';
 import '../Styles/Header.css';
 export function Header(){
     const dispatch= useDispatch();
+    useEffect(()=>{
+        dispatch(meTraigoGeneros())
+        return ()=> {
+            dispatch(clearGenre())
+        };
+    },[dispatch])
     const genres= useSelector((state)=>state.allGenres);
-
+    console.log(genres);
     const [orderN, setOrderN] = useState({
         type:'De la A a la Z'
     })
@@ -61,12 +69,7 @@ export function Header(){
         if(e.target.value==='') return dispatch(clearDetail());
         dispatch(genreFilter(e.target.value))
     }
-
-    /*const orderNamePrueba=(e)=>{
-        if(e.target.value==='') return dispatch(clearDetail());
-        orderName(e.target.value)
-    }*/
-
+console.log(genres);
     return (
         <header className="navBar">
             <div className="NavBar1">
@@ -120,7 +123,14 @@ export function Header(){
                     <option value='Xbox Series S/X'>Xbox Series S/X</option>
                 </select>
 
-                <select className='filtroGen' onChange={filterGen}>
+                <select className="filtroGen" onChange={filterGen}>
+                    <option value='' >Genres</option>
+                    {genres && genres.map(gen=>{
+                        return <option key={gen.name} value={gen.name}>{gen.name}</option>
+                    })}
+                </select>
+                
+                {/*<select className='filtroGen' onChange={filterGen}>
                     <option value=''>Seleccionar genero</option>
                     <option value='Action'>Action</option>
                     <option value='Adventure'>Adventure</option>
@@ -141,16 +151,13 @@ export function Header(){
                     <option value='Simulation'>Simulation</option>
                     <option value='Sports'>Sports</option>
                     <option value='Strategy'>Strategy</option>
-                </select>
+                </select>*/}
 
-                {/*<select onChange={orderNamePrueba}>
-                    <option value=''>Ordenar alfabeticamente</option>
-                    <option value={orderN.type}>From A to Z</option>
-                    
-    </select>*/}
+                
                 <form className='formu' onSubmit={onSubmit}>
                     <input className='elInput' type='text' placeholder="Escribir el videojuego aqui..." 
                         value={name} onChange={handleChange}></input>
+                    <input className='elbotonInput' type="submit"></input>
                 </form>
             </div>
             </div>

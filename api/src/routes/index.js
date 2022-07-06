@@ -9,7 +9,6 @@ const genresRoutes= require('./genresRoutes');
 const router = Router();
 
 // Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
 router.use('/games',gamesRoutes);
 router.use('/createGame',createGame);
 router.use('/genres',genresRoutes);
