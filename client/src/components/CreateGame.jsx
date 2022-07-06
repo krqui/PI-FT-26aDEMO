@@ -43,17 +43,20 @@ console.log(input);
         }
         if (!input.released) {
             errors.released='Missing Date!'
-        } else if (!/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(input.released)) {
-            errors.released= 'Wrong format!. Example: XX-XX-XXXX'
+        //} else if (!/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(input.released)) {
+        } else if (input.released[0]===' '){
+            errors.released='Should not have space behind!'
+        } else if (!/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/.test(input.released)) {
+            errors.released= 'Wrong format!. Example: YYYY-MM-DD'
         }
         if (input.rating<0 || input.rating >5) {
             errors.rating='Rating must be between 0 and 5!'
         }
         if (input.platforms.length===0) {
-            errors.platforms='Select at least 1 platform!'
+            errors.platforms='Select at least 2 platform!'
         }
         if (input.genres.length===0) {
-            errors.genres='Select at least 1 gender!'
+            errors.genres='Select at least 2 gender!'
         }
         return errors
     }
@@ -168,7 +171,7 @@ console.log(input);
                 <div className='contenedor-platforms'>
                     <label>Platforms: </label>
                     <select value={input.platforms} onChange={(e)=>handlePlat(e)} multiple={true}>
-                        <option value=''>Seleccionar plataforma</option>
+                        {/*<option value=''>Seleccionar plataforma</option>*/}
                         <option value='Android'>Android</option>
                         <option value='iOS'>iOS</option>
                         <option value='Linux'>Linux</option>

@@ -44,7 +44,7 @@ router.get('/', async(req,res)=>{
             res.status(400).send('no hubo resultados')
         }
     } else {
-        res.send(videosAPI)
+        res.status(200).send(videosAPI)
     }
 
     /*if (name) {

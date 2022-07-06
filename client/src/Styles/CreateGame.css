@@ -10,6 +10,7 @@ label {
 }
 
 .formulario {
+    width: 50vw;
     margin-top: 5vh;
     margin-left: 16px;
     display: inline-block;
@@ -19,17 +20,41 @@ label {
 .contenedor-name {
     display: flex;
 }
+
+.nameInput {
+    height: 30px;
+    width: auto;
+}
+
 .contenedor-description {
     display: flex;
+}
+
+.nameDescrip {
+    height: 50px;
+    width: 500px;
 }
 .contenedor-released {
     display: flex;
 }
+
+.nameReleased {
+    height: 30px;
+}
 .contenedor-rating {
     display: flex;
 }
+
+.nameRating {
+    height: 30px;
+}
 .contenedor-image {
     display: flex;
+}
+
+.nameImage {
+    height: 30px;
+    width: 500px;
 }
 .contenedor-platforms {
     display: flex;
@@ -53,4 +78,53 @@ label {
 }
 .meRegreso:hover {
     background-color: rgb(7, 215, 145);
+}
+
+.error-name {
+    color: rgb(250, 50, 50);
+    background-color: rgb(255, 187, 0);
+    font-family: 'Play', sans-serif;
+    margin-left: 10px;
+    font-size: 25px;
+   
+}
+
+.error-description {
+    color: rgb(250, 50, 50);
+    background-color: rgb(255, 187, 0);
+    font-family: 'Play', sans-serif;
+    margin-left: 10px;
+    font-size: 25px;
+}
+
+.error-released {
+    color: rgb(250, 50, 50);
+    background-color: rgb(255, 187, 0);
+    font-family: 'Play', sans-serif;
+    margin-left: 10px;
+    font-size: 25px;
+}
+
+.error-rating {
+    color: rgb(250, 50, 50);
+    background-color: rgb(255, 187, 0);
+    font-family: 'Play', sans-serif;
+    margin-left: 10px;
+    font-size: 25px;
+}
+
+.error-platforms {
+    color: rgb(250, 50, 50);
+    background-color: rgb(255, 187, 0);
+    font-family: 'Play', sans-serif;
+    margin-left: 10px;
+    font-size: 25px;
+}
+
+.error-genres {
+    color: rgb(250, 50, 50);
+    background-color: rgb(255, 187, 0);
+    font-family: 'Play', sans-serif;
+    margin-left: 10px;
+    font-size: 25px;
 }

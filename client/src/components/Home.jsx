@@ -91,6 +91,7 @@ useEffect(()=>{
                     totalGames={games.searchGame? games.searchGame.length: games.allGames.length}
                     paginate={paginate}>
                 </Pagination>
+                <h4 className="creditos">Created by Diego Carcausto & Soy Henry Coding Bootcamp</h4>
             </div>
         </div>
     )
