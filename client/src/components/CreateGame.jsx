@@ -40,6 +40,8 @@ console.log(input);
             errors.description='Should not have space behind!'
         } else if (!input.description) {
             errors.description='Missing description'
+        } else if (input.description.length>10000000) {
+            errors.description='Description is too long! Please write less characters.'
         }
         if (!input.released) {
             errors.released='Missing Date!'
@@ -58,6 +60,12 @@ console.log(input);
         if (input.genres.length===0) {
             errors.genres='Select at least 2 gender!'
         }
+        if (input.image[0]===' '){
+            errors.image="You must write an image url!"
+        } else if (!/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/.test(input.image)){
+            errors.image='You must insert a link that starts with http:// or https:// and ends with .com/.net/...'
+        }
+        //if (https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&))
         return errors
     }
 
@@ -110,6 +118,8 @@ console.log(input);
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+        if(input.name==='') return alert('LLENAR EL FORMULARIO');
+
         dispatch(postVideogame(input))
         setInput({
             name:'',
@@ -128,47 +138,48 @@ console.log(input);
         <div className='container-div'>
             <form className='formulario' autoComplete="off" onSubmit={(e)=>handleSubmit(e)}>
                 <div>
-                <div className='contenedor-name'>
+                <div className='contenedor-InputPadre'>
                     <label>Name: </label>
                     <input className='nameInput' type="text" name="name" 
                             value={input.name} 
                             placeholder='Insert name...' 
                             onChange={(e)=>handleInput(e)}></input>
-                    {Errors.name && (<p className='error-name'>{Errors.name}</p>)}
+                    {Errors.name && (<p className='error-resaltado'>{Errors.name}</p>)}
                 </div>
-                <div className='contenedor-description'>
+                <div className='contenedor-InputPadre'>
                     <label>Description: </label>
                     <input className='nameDescrip' type='text' name='description'
                             value={input.description}
                             placeholder='Insert description...'
                             onChange={(e)=>handleInput(e)}></input>
-                    {Errors.description && (<p className='error-description'>{Errors.description}</p>)}
+                    {Errors.description && (<p className='error-resaltado'>{Errors.description}</p>)}
                 </div>
-                <div className='contenedor-released'>
+                <div className='contenedor-InputPadre'>
                     <label>Released: </label>
                     <input className='nameReleased' type='text' name='released'
                             value={input.released}
                             placeholder='Insert release date'
                             onChange={(e)=>handleInput(e)}></input>
-                    {Errors.released && (<p className='error-released'>{Errors.released}</p>)}
+                    {Errors.released && (<p className='error-resaltado'>{Errors.released}</p>)}
                 </div>
-                <div className='contenedor-rating'>
+                <div className='contenedor-InputPadre'>
                     <label>Rating: </label>
                     <input className='nameRating' type='number' name='rating'
                             value={input.rating} step='0.01' min='0' max='5' 
                             placeholder='Insert rating...'
                             onChange={(e)=>handleInput(e)}></input>
-                    {Errors.rating && (<p className='error-rating'>{Errors.rating}</p>)}
+                    {Errors.rating && (<p className='error-resaltado'>{Errors.rating}</p>)}
                 </div>
-                <div className='contenedor-image'>
+                <div className='contenedor-InputPadre'>
                     <label>Image: </label>
                     <input className='nameImage' type='text' name='image'
                             value={input.image}
                             placeholder='Url image...'
                             onChange={(e)=>handleInput(e)}>
                     </input>
+                    {Errors.image && (<p className='error-resaltado'>{Errors.image}</p>)}
                 </div>
-                <div className='contenedor-platforms'>
+                <div className='contenedor-InputPadre'>
                     <label>Platforms: </label>
                     <select value={input.platforms} onChange={(e)=>handlePlat(e)} multiple={true}>
                         {/*<option value=''>Seleccionar plataforma</option>*/}
@@ -188,9 +199,9 @@ console.log(input);
                         <option value='Xbox One'>Xbox One</option>
                         <option value='Xbox Series S/X'>Xbox Series S/X</option>
                     </select>
-                    {Errors.platforms && (<p className='error-platforms'>{Errors.platforms}</p>)}
+                    {Errors.platforms && (<p className='error-resaltado'>{Errors.platforms}</p>)}
                 </div>
-                <div className='contenedor-genres'>
+                <div className='contenedor-InputPadre'>
                     <label>Genres: </label>
                     <select value={input.genres} onChange={(e)=>handleSelect(e)} multiple={true}>
                         {Genres && Genres.map(gen=>{
@@ -199,11 +210,11 @@ console.log(input);
                             )
                         })}
                     </select>
-                    {Errors.genres && (<p className='error-genres'>{Errors.genres}</p>)}
+                    {Errors.genres && (<p className='error-resaltado'>{Errors.genres}</p>)}
                     </div>
                 </div>
 
-                <div className='contenedor-submit'>
+                <div className='contenedor-InputPadre'>
                     <div>
                         <button className='submit'
                         disabled={!Errors.name && !Errors.description && !Errors.released && !Errors.platforms && !Errors.genres? false:true}

@@ -69,7 +69,7 @@ export function Header(){
         if(e.target.value==='') return dispatch(clearDetail());
         dispatch(genreFilter(e.target.value))
     }
-console.log(genres);
+//console.log(genres);
     return (
         <header className="navBar">
             <div className="NavBar1">

@@ -86,11 +86,11 @@ function reducer(state=initialState, {type,payload}){
             }
         case GENRE_FILTER:
             let allGenresClone=[...state.allGames];
-            //let filtered2= allGenresClone.filter(c=>c.genres?.filter(a=>a.name===payload).length>0)
             let filtered2=allGenresClone.filter(c=>c.genre?.includes(payload))
             return {
                 ...state,
-                searchGame:filtered2
+                searchGame:filtered2,
+                reseteoPage:true
             }
         case CLEAR_GENRE:
             return {

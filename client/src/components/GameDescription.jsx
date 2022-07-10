@@ -57,7 +57,7 @@ export const GameDescription=()=>{
                     <h3>{gameDetail.description}</h3>
                     <h3>Rating: {gameDetail.rating}</h3>
                     <h3>Platforms: {gameDetail.platforms}</h3>
-                    <h3>Lanzamiento: {gameDetail.lanzamiento}</h3>
+                    <h3>Release date: {gameDetail.lanzamiento}</h3>
                 </div>
             </div>
 

@@ -10,33 +10,21 @@
     background-color: rgb(255, 110, 7);
     border-style: solid;
     border-color: rgb(255, 110, 7);
+    cursor:pointer;
 }
 
 
 .container-description {
-    /*display: block;
-    margin-top: 10vh;
-    position: relative;
-    margin-left: 25vw;
-    margin-right: 25vw;
-    width: 50vw;
-    background-color: rgba(40, 148, 255, 0.631);
-    border-style: double;
-    border-color: rgba(10, 127, 244, 0.891);*/
     width: 80vw;
     height: 80vh;
     margin-top: 15px;
     margin-left: 10vw;
-    /*margin: 0 auto;*/
     display: flex;
     border-radius: 2px;
     color: #0fa
 }
 
 .imagen-container {
-    /*display: block;*/
-
-    /*background-color: rgb(148, 31, 31);*/
     width: 50%;
     height: 100%;
     display: flex;
@@ -49,19 +37,13 @@
     border-color:rgba(0, 0, 0, 0.629); ;
 }
 .class-imagen2 {
-    /*height: 750px;
-    margin-left: auto;
-    margin-right: auto;*/
-    /*max-width: 500px;*/
     max-width: 35vw;
     border-radius: 5px;
-    /*height: 70%;*/
 }
 
 .h3-container-h3 {
     width: 50%;
     height:100%;
-    /*display: flex;*/
     display: inline-block;
     justify-content: center;
     text-align: left;

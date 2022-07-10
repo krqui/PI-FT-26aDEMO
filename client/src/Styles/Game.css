@@ -1,5 +1,4 @@
 .tarjetaJuego {
-    
     box-sizing: border-box;
     /*background-color: rgb(3, 64, 113);*/
     /*margin-top: 5vh;*/
@@ -14,28 +13,14 @@
     padding-top: 10px ;
     top:10px;
     color: #fff;
-    text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-      0 0 42px #0fa,
-      0 0 82px #0fa,
-      0 0 92px #0fa,
-      0 0 102px #0fa,
-      0 0 151px #0fa;
-    
 }
 
 .container-imagen {
     position: relative;
     height: 240px;
-    background-color: rgb(7, 27, 80);
+    /*background-color: rgb(7, 27, 80);*/
 }
 .imagen {
-    /*margin-top: 10px;
-    margin-bottom: 10px;*/
-    /*max-height: 280px;*/
-    /*max-width: 350px;*/
     width:350px;
     max-height: 230px;
     margin-top: 10px;
@@ -43,18 +28,20 @@
     border-style:solid ;
     border-color: black;
     border-radius: 3%;
-    /*max-width: auto;
-    height: auto;*/
 }
+
 .h3-container {
     display: block;
     margin-left: 20px;
     text-align: left;
     font-size: 20px;
     font-family: 'Play', sans-serif;
-    /*color:rgb(27, 60, 246)*/
-    color: #fff;
-    text-shadow:
+    color: #fff; 
+}
+.tarjetaJuego:hover{
+    border-style: solid;
+  border-width:  1px 5px 5px 1px;
+  text-shadow:
       0 0 7px #fff,
       0 0 10px #fff,
       0 0 21px #fff,
@@ -63,13 +50,4 @@
       0 0 92px #0fa,
       0 0 102px #0fa,
       0 0 151px #0fa;
-    
 }
-
-.tarjetaJuego:hover{
-    border-style: solid;
-  border-width:  1px 5px 5px 1px;
-}
-/*.imagen {
-    max-width: 280px;
-}*/

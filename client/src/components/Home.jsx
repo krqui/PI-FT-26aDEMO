@@ -8,19 +8,23 @@ import '../Styles/Home.css'
 function Home(){
 const dispatch= useDispatch();
 const games=useSelector(state=>state);
-
+if (games.reseteoPage==true){
+    console.log('aplique el filtro de generos.')
+}
+//let cuentaPag=0;
 //console.log(games.allGames);
 const [currentPage, setCurrentPage] = useState(1);
 const [gamesPerPage, setGamesPerPage]= useState(10);
 
 const pageValidator=(currentPage)=>{
     if(currentPage===1){
+        //console.log('estoy en la pagina 1');
         setGamesPerPage(9);
         return;
     }
     setGamesPerPage(10)
 }
-
+// page validator sirve para que te bote o 9 o 10 elementos, nada mas.
 
 useEffect(()=>{
     dispatch(getAllGam())
@@ -31,15 +35,24 @@ useEffect(()=>{
 
 const indexOfLastGame=currentPage*gamesPerPage;
 const indexOfFirstGame= indexOfLastGame - gamesPerPage;
-const currentGame=Array.isArray(games.searchGame)
+/*const currentGame=Array.isArray(games.searchGame)
         ? games.searchGame?.slice(indexOfFirstGame, indexOfLastGame)
-        : games.allGames?.slice(indexOfFirstGame,indexOfLastGame);
+        : games.allGames?.slice(indexOfFirstGame,indexOfLastGame);*/
+let currentGame;
+if(Array.isArray(games.searchGame)){
+    console.log(games.searchGame);
+    currentGame=games.searchGame?.slice(indexOfFirstGame,indexOfLastGame);
+    //cuentaPag=cuentaPag+1;
+} else {
+    currentGame=games.allGames?.slice(indexOfFirstGame,indexOfLastGame)
+}
 
 console.log(currentGame);
-const paginate=pageNumber=>{
+function paginate(pageNumber){
     setCurrentPage(pageNumber)
+    console.log(`Ahora estoy en la pagina ${pageNumber}`);
 };
-
+// TENGO QUE LOGRAR QUE CUANDO HAGA UN FILTRO OCURRA setCurrentPage(1)
 
 const renderContext = {
     allGames:
@@ -62,7 +75,7 @@ const renderContext = {
     searchGame:
             !Array.isArray(games.searchGame)
                 ?   <>
-                    <h1>No se encontro ningun pais...</h1>
+                    <h1>No se encontro ningun videojuego...</h1>
                     </>
                 : currentGame?.map(game=>(
                     <Game key={game.id}
