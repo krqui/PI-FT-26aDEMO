@@ -13,19 +13,21 @@ export const GENRE_FILTER='GENRE_FILTER';
 export const GET_GAME_ID='GET_GAME_ID';
 export const CLEAR_GENRE='CLEAR_GENRE';
 
-const URL='http://localhost:3001/games';
-const URLCreateGame='http://localhost:3001/createGame';
+//const URL='http://localhost:3001/games';
+//const URLCreateGame='http://localhost:3001/createGame';
 // se exportan al reducer.js
 export function getAllGam(){
     return async (dispatch)=>{
-        const res = await axios('http://localhost:3001/games/');
+        //const res = await axios('http://localhost:3001/games/');
+        const res = await axios('/games/');
         return dispatch({ type: GET_GAMES, payload: res.data });
     }
 }
 
 export function meTraigoGeneros(){
     return async (dispatch)=>{
-        let respuesta=await axios('http://localhost:3001/genres/')
+        //let respuesta=await axios('http://localhost:3001/genres/')
+        let respuesta=await axios('/genres/')
         return dispatch({type:GET_GENRES,payload:respuesta.data})
     }
 }
@@ -33,7 +35,9 @@ export function meTraigoGeneros(){
 
 export const getGameName=(name)=> async dispatch => {
     try{
-        const response=await axios(`${URL}?name=${name}`);
+        //const response=await axios(`${URL}?name=${name}`);
+        const response=await axios(`/games?name=${name}`);
+        
 
         if (response.data) return dispatch({type:GET_GAME_NAME, payload:response.data});
         } catch(error) {
@@ -76,7 +80,9 @@ export function clearGenre(){
 export const getGameDetail=(id)=>async dispatch=>{
     try{
         
-        const response= await axios(`${URLCreateGame}/${id}`);
+        //const response= await axios(`${URLCreateGame}/${id}`);
+        const response= await axios(`/createGame/${id}`);
+
         return dispatch({type:GET_GAME_ID, payload:response.data})
     } catch (error) {
         return console.log('ERROR--->',error);
@@ -85,7 +91,8 @@ export const getGameDetail=(id)=>async dispatch=>{
 
 export function postVideogame(payload){
     return async function (dispatch) {
-        let response= await axios.post('http://localhost:3001/createGame',payload)
+        //let response= await axios.post('http://localhost:3001/createGame',payload)
+        let response= await axios.post('/createGame',payload)
         return response
     }
 }

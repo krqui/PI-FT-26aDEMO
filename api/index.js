@@ -23,9 +23,11 @@ const {getAllGames} = require('./src/controllers/gamesController')
 const {getAllGenres} = require('./src/controllers/genresController');
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
-  server.listen(3001, async() => {//CREO QUE HAY QUE PONERLE ASYNC
+  //server.listen(3001, async() => {//CREO QUE HAY QUE PONERLE ASYNC
+  server.listen(process.env.PORT, async() => {//CREO QUE HAY QUE PONERLE ASYNC
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     //await getAllGames();
     //await getAllGenres();
   }); 
 });
+// PARA QUE FUNCIONE EN EL LOCALHOST, DEBO ASIGNAR PORT=3001 EN .env

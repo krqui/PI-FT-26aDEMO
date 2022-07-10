@@ -10,8 +10,8 @@ import dotenv from 'dotenv';
 import axios from 'axios';
 // antes estaba la etiqueta <React.StrictMode> conteniendo a <App/>
 // en el Provider se realiza la conexion con redux y los estados.
-//dotenv.config();
-//axios.defaults.baseURL=process.env.REACT_APP_API||'http://localhost:3001';
+dotenv.config();
+axios.defaults.baseURL=process.env.REACT_APP_API||'http://localhost:3001';
 
 ReactDOM.render(
   <Provider store={store}>

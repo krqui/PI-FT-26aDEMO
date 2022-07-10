@@ -51,10 +51,11 @@
     background-color: rgba(0, 255, 128, 0.623);
     border-style: double;
     border-color: rgba(0, 255, 128, 0.623);
-    color: #fff;
+    /*color: #fff;*/
+    color: rgb(0, 0, 0);
     font-family: 'Play', sans-serif;
     font-size: 15px;
-    text-shadow:
+    /*text-shadow:
       0 0 7px #fff,
       0 0 10px #fff,
       0 0 21px #fff,
@@ -62,7 +63,8 @@
       0 0 82px #0fa,
       0 0 92px #0fa,
       0 0 102px #0fa,
-      0 0 151px #0fa
+      0 0 151px #0fa*/
+
 }
 
 .button-backToVideogames:hover {
