@@ -14,7 +14,7 @@ module.exports={
     catalogoTotal=[...catalogoTotal[0],...catalogoTotal[1],...catalogoTotal[2],...catalogoTotal[3],...catalogoTotal[4]]
     let jeyson=catalogoTotal.map(e=>({name:e.name,id:e.id, imagen:e.background_image,lanzamiento: e.released,rating:e.rating,
         plataformas:e.platforms.map(f=>(f.platform.name)),genre:e.genres.map(g=>(g.name))}));
-console.log(jeyson);
+//console.log(jeyson);
         return jeyson;
     },
     DB: async function allGamesDB(){
