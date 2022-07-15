@@ -84,7 +84,7 @@ export function Header(){
                 <Link to='../createVideogame'>
                     <button className='button-crearVideogame' onClick={()=>dispatch(clearDetail())}>
                         {/*Esto hace que se ejecute dispatch({type:CLEAR:DETAIL}) */}
-                        <h3>Crear videojuego</h3>
+                        <h3>Create videogame</h3>
                     </button>
                 </Link>
                 <button className='class-order' onClick={orderName}>
@@ -105,7 +105,7 @@ export function Header(){
                 
 
                 <select className='filtroPlat' onChange={filter}>
-                    <option value=''>Seleccionar plataforma</option>
+                    <option value=''>Choose platform</option>
                     <option value='Android'>Android</option>
                     <option value='iOS'>iOS</option>
                     <option value='Linux'>Linux</option>
