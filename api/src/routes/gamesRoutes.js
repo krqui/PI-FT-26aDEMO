@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const axios = require('axios');
-const {Games, Generos, API_KEY} = require('../db.js');
+const {API_KEY} = require('../db.js');
 const {getAllGenres} = require('../controllers/genresController.js');
 //const {Op} = require('sequelize');
 const functions= require('../controllers/gamesController.js')
@@ -10,8 +10,6 @@ const router=Router();
 router.get('/', async(req,res)=>{
     const {name}= req.query;
 
-    //let options={};
-    
     try {
         const videosAPI=await functions.ALL();
         if (contador==0){
@@ -47,25 +45,6 @@ router.get('/', async(req,res)=>{
         res.status(200).send(videosAPI)
     }
 
-    /*if (name) {
-            options= {
-                where: {
-                    name: {
-                        [Op.iLike]: `%${name}%`,
-                    }
-                }
-            }
-        }*/
-
-        /*const nameSearch= await Games.findAll({...options,include: {
-            model:Generos,
-            attributes:['name','id'],
-            through:{attributes:[]},
-        }})
-
-
-        if (!nameSearch.length) return res.status(404).send(`El videojuego '${name}' no arrojo ningun resultado.`)
-        res.json(nameSearch)*/
     } catch (error) {
         console.log(error);
         res.status(404).send(error);

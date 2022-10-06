@@ -5,7 +5,6 @@ const {Games, Generos, API_KEY} = require('../db');
 
 const router=Router();
 const functions= require('../controllers/gamesController.js');
-// FALTA ESTO
 let id=800002;
 router.post('/',async function(req,res){
     const {name,description,released,rating,platforms,image,genres}=req.body;
@@ -23,8 +22,6 @@ router.post('/',async function(req,res){
             },
             include:[{
                 model:Generos,
-                //where:{id:idgenero}
-                //where:{id:genres[0]}// pongo asi porque desde el front creo que manda un arreglo
             }]
         });
 
@@ -77,7 +74,6 @@ router.get('/:id',async(req,res)=>{
     if(id<800000){
         let gameApi=(await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)).data
         //console.log(gameApi);
-
         let game2={
             "name":gameApi.name,
             "image":gameApi.background_image,
@@ -101,13 +97,10 @@ router.get('/:id',async(req,res)=>{
                 name:game.name,
                 image:game.imagen,
                 genres:genu,
-                //genres:game.genre,
                 description:game.description,
                 rating:game.rating,
                 platforms:platu,
-                //platforms:game.plataformas,
-                lanzamiento:game.lanzamiento
-                
+                lanzamiento:game.lanzamiento 
             }
         })
         let gameDB4=gameDB3[0]

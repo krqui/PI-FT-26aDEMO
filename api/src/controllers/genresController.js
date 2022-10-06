@@ -6,7 +6,6 @@ async function getAllGenres(){
     try{
         let generos= (await axios(`https://api.rawg.io/api/genres?key=${API_KEY}`)).data.results
         .map(e=>({name:e.name}));
-        
         await Generos.bulkCreate(generos)
         contadorBulk+1;
         console.log('Genres cargados a la database.');

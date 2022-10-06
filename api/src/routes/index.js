@@ -8,7 +8,6 @@ const genresRoutes= require('./genresRoutes');
 
 const router = Router();
 
-// Configurar los routers
 router.use('/games',gamesRoutes);
 router.use('/createGame',createGame);
 router.use('/genres',genresRoutes);
